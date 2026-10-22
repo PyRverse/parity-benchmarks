@@ -1,0 +1,13 @@
+case,mean,sample_variance
+ordinary,3,2.5
+decimals,0.25,0.016666666666666666
+constant,7,0
+singleton,5,NaN
+empty,NaN,NaN
+missing_removed,2,2
+missing_propagated,NaN,NaN
+all_missing,NaN,NaN
+positive_infinity,Inf,NaN
+negative_infinity,-Inf,NaN
+mixed_infinities,NaN,NaN
+zero,0,0

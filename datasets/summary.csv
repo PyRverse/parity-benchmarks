@@ -1,0 +1,13 @@
+case,values,remove_missing
+ordinary,1;2;3;4;5,false
+decimals,0.1;0.2;0.3;0.4,false
+constant,7;7;7,false
+singleton,5,false
+empty,,false
+missing_removed,1;NaN;3,true
+missing_propagated,1;NaN;3,false
+all_missing,NaN;NaN,true
+positive_infinity,1;Inf,false
+negative_infinity,1;-Inf,false
+mixed_infinities,Inf;-Inf,false
+zero,0;0,false

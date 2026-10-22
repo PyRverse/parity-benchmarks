@@ -1,0 +1,6 @@
+{
+  "name": "Arithmetic mean and sample variance on 12 synthetic edge cases",
+  "tolerance": {"atol": 1e-12, "rtol": 1e-12, "equal_nan": true},
+  "rationale": "Small deterministic float64 examples with simple arithmetic. These tolerances are specific to this example and are not a default for statistical methods.",
+  "scope": "Point estimates and explicit missing/infinity behavior; not p-values, inference, model fitting, performance, or arbitrary datasets."
+}

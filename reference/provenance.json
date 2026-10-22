@@ -1,0 +1,14 @@
+{
+  "origin": "executed R reference/generate.R",
+  "generated_at_utc": "2026-10-22T16:41:43.550572+00:00",
+  "r_version": "R version 4.6.1 (2026-06-24 ucrt)",
+  "command": "Rscript --vanilla reference/generate.R",
+  "missing_value_mapping": "R NA and NaN are serialized as NaN; distinction is not tested",
+  "sha256": {
+    "datasets/summary.csv": "cd8618e1cd4ed3a6dab292724d0a552d49c65357de4e547db0adac89dc97c835",
+    "reference/generate.R": "3693344349d38e46dd88fb5b44847eae33b8dcd0323741c226acc41fe3ea42c9",
+    "reference/generate.py": "7c5faa9b315037ef9460385e3e08e6460a64547eb8e05f8d3ff2fda56901d485",
+    "reference/summary.csv": "5da0482f37305fe1b8ebb000a1b3c66a2cbd6a0d01b9618b14df9702d1afbbbc",
+    "reference/session-info.txt": "22d2bcbbe96ed0286a6e63e98d7d211081e4a0171d499331de71a8a3b0bd8fb1"
+  }
+}
