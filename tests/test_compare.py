@@ -76,6 +76,27 @@ def test_reject_implicit_numeric_conversion(value):
         check(value, value)
 
 
+@pytest.mark.parametrize(
+    ("reference", "actual"),
+    [
+        ([2**53], [2**53 + 1]),
+        (np.array([2**53], dtype=np.int64), np.array([2**53 + 1], dtype=np.int64)),
+        ([0.0, 2**53], [0.0, 2**53 + 1]),
+        ([[2**53, 0.0]], [[2**53 + 1, 0.0]]),
+        ([0], np.array([2**64 - 1], dtype=np.uint64)),
+        ([0], [10**400]),
+    ],
+)
+def test_reject_integer_precision_loss_before_numpy_coercion(reference, actual):
+    with pytest.raises(ValueError, match="not exactly representable as float64"):
+        check(reference, actual)
+
+
+def test_exactly_representable_large_integers_remain_valid():
+    assert check([2**53 + 2], [2**53 + 2])["passed"]
+    assert not check([2**53], [2**53 + 2])["passed"]
+
+
 def test_tables_align_columns_but_require_row_order():
     ref = {"mean": [1.0, 2.0], "variance": [0.1, 0.2]}
     got = {"variance": [0.1, 0.2], "mean": [1.0, 2.0]}

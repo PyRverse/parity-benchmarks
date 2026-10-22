@@ -8,9 +8,13 @@ every comparison; one threshold cannot validate all statistical methods.
 
 Exact shapes are required. Tables match columns by name and require identical row
 order and unique row IDs; align deliberately before comparing. The current API is
-for real numeric columns only, converts to float64, and does not validate categorical
-data or preserve large integers beyond float64's exact range. Check metadata,
-categorical outputs, and large integer counts separately.
+for real numeric columns only and compares in float64. Integer inputs must be exactly
+representable as float64; otherwise the comparator raises `ValueError` before
+comparison, including for mixed Python lists of integers and floats. For example,
+`2**53 + 1` is rejected, while `2**53 + 2` remains representable. Pass original
+integer values: rounding that occurred before this API was called cannot be
+recovered. Check categorical data and large integer counts requiring exact arithmetic
+with a separate comparator; floating-point inputs follow the float64 precision contract.
 
 Matching signed infinities pass. A finite/infinite pair or opposite infinities fails.
 NaNs match only with `equal_nan=True`; check why missing results occurred before

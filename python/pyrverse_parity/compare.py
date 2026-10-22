@@ -26,10 +26,24 @@ class Tolerance:
 
 
 def _numeric(values: ArrayLike) -> NDArray[np.float64]:
-    array = np.asarray(values)
-    if array.dtype.kind not in "iuf":
-        raise TypeError("Expected real numeric values, not strings, booleans, or complex values")
-    return array.astype(np.float64)
+    # An object array preserves original Python integers even in mixed int/float
+    # lists. np.asarray(values) could already round those integers before validation.
+    original = np.asarray(values, dtype=object)
+    for value in original.flat:
+        if isinstance(value, (bool, np.bool_)) or not isinstance(
+            value, (int, float, np.integer, np.floating)
+        ):
+            raise TypeError(
+                "Expected real numeric values, not strings, booleans, or complex values"
+            )
+        if isinstance(value, (int, np.integer)):
+            try:
+                converted = float(value)
+            except OverflowError as error:
+                raise ValueError("Integer input is not exactly representable as float64") from error
+            if not np.isfinite(converted) or int(converted) != int(value):
+                raise ValueError("Integer input is not exactly representable as float64")
+    return original.astype(np.float64)
 
 
 def compare_arrays(

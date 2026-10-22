@@ -29,7 +29,7 @@
       "scope": "Point estimates and explicit missing/infinity behavior; not p-values, inference, model fitting, performance, or arbitrary datasets."
     },
     "python_source_sha256": "2b937c82605a34824637b3b6c7164b9a65c3fc06a6fc5e69feaaed72310616b3",
-    "comparator_sha256": "646351e478ceb94f23631f9e74c871c65cc9b9eb6d3f6186f4e655fd70bc5155"
+    "comparator_sha256": "8d0299ea6257c196d990faa4a31f651b909a656f88101cca463811ee7ed8f4e7"
   },
   "comparisons": [
     {
